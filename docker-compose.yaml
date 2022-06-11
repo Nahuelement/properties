@@ -1,0 +1,8 @@
+services:
+  amhdb:
+    image: mongo:4.0.0
+    container_name: amh-database
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo:/data/db
