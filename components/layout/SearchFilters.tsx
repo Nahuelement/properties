@@ -1,42 +1,46 @@
 import { useEffect, useState,FC } from 'react';
 import { useRouter } from 'next/router';
-import { MdCancel } from 'react-icons/md';
-import Image from 'next/image';
-import NextLink from 'next/link';
-import {AppBar, Badge,InputLabel,Box,FormHelperText, Button,FormControl, MenuItem, Input, Link, Toolbar, Typography, InputAdornment, IconButton, Grid
+
+import {AppBar, Badge,InputLabel,Box,FormHelperText, Button,FormControl, MenuItem, Input, Link, Toolbar, Typography, InputAdornment, IconButton, Grid, Container
 } from '@mui/material'
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select, { SelectChangeEvent, SelectProps } from '@mui/material/Select';
 import { filterData, getFilterValues, PropsFilter } from '../../utils/filterData';
 import { baseUrl, fetchApi } from '../../utils/fetchApi';
-import noresult from '../../assets/noresult.svg';
-import { ClearOutlined } from '@mui/icons-material';
-import { height } from '@mui/system';
+import TextField from '@mui/material/TextField';
+import _, { map } from 'underscore'
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 interface Props{
   onLoading: () => void,
 }
+interface PropsSearch{
+  values:{ purpose?: string; minPrice?: string; maxPrice?: string; roomsMin?: string; bathsMin?: string; }
+}
+
+
 
 
 const initialState = {
   purpose:'Comprar',
- 
  
    minPrice:'50,000',
    maxPrice:'50,000',
   
    roomsMin:'1',
   bathsMin:'1',
-  //  sort?:string
-  // locationExternalIDs?:string
+  sort:'Newest',
+  categoryExternalID: 'Apartment'
 
   }
 
-export const SearchFilters:FC<Props>=(onLoanding)=> {
+export const SearchFilters:FC=()=> {
 
   const {push } = useRouter();
 
+  
 
+  const matches = useMediaQuery('(min-width:1290px)');
 
   const onSearchTerm = () => {
     if( searchTerm.trim().length === 0 ) return;
@@ -48,9 +52,9 @@ export const SearchFilters:FC<Props>=(onLoanding)=> {
 
 
   const [values, setValues] = useState(initialState);
-  console.log({values})
+  
   const [filters] = useState(filterData)
-  const handleInputChange = (event: SelectChangeEvent<string>) => {
+  const handleInputChange = (event: any) => {
 
     setValues({
         ...values,
@@ -58,33 +62,47 @@ export const SearchFilters:FC<Props>=(onLoanding)=> {
     });
 
 }
-  
+
+function valuesToArray(o:any) {
+  return _.pairs(o);
+}
+const result = valuesToArray(values)
+
+
+
   return (
    
 
-    <AppBar sx={{width:'70%', marginX:'-10%',height:{sm:'20%'},marginTop:{sm:'2%'}}}>
-      <Toolbar 
-              sx={{backgroundColor:'whitesmoke',display:{xs:'block',sm:'inline-flex'} ,
-              borderRadius:'3px',padding:'4%',
-              boxShadow: 'rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;'
-               }}  >
+    <AppBar  position="absolute" sx={{width:{xs:'73%',sm:'80%'}, marginX:{xs:'13%',sm:'10%'}}}
+    
+    >
+      <Toolbar disableGutters
+
+              sx={{backgroundColor:'whitesmoke',display:{xs:'block',sm:`${!matches?'block':'flex'}`},marginY:{xs:-18},
+              borderRadius:'8px',padding:{xs:'2vw',sm:'1vw'},
+              paddingLeft:{xs:'3vw'},
+              justifyContent:'space-between',
+              boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.24)' ,
+              alignItems:'center'           
+   }} >
               {/* <NextLink href='/' passHref>
                   <Link display='flex' alignItems='center'>
                         <Typography  color='chocolate'   variant='h6'>Propiedades |</Typography>
                         <Typography color='chocolate' sx={{ ml: 0.5 }}>AMH</Typography>
                     </Link>  
               </NextLink> */}
+      <TextField id="outlined-basic" label="Ubicacion" variant="outlined" sx={{margin:1}} />
     {filters?.map((filter) => (
         <FormControl 
         key={filter.queryName}
-        sx={{m:1}}
+        sx={{m:1, position:'relative'}}
         >
         <InputLabel 
         sx={{}}
         >{filter.queryName}</InputLabel>
         <Select
-          sx={{  minWidth: 90, maxHeight:40 }}
-          value={`${values?.[filter.queryName]}`}
+          sx={{  minWidth: 110, maxHeight:40 }}
+          value={`${result.filter(v=>v[0] ===filter.queryName)[0]?.[1]}`}
           
           name= {filter.queryName}
           label={filter.queryName}
@@ -103,7 +121,7 @@ export const SearchFilters:FC<Props>=(onLoanding)=> {
       
       
       ))} 
-      <Input
+      {/* <Input
           sx={{ maxWidth:'200px'  }}
           className='fadeIn'
           color='secondary'
@@ -113,7 +131,7 @@ export const SearchFilters:FC<Props>=(onLoanding)=> {
           onKeyPress={ (e) => e.key === 'Enter' ? onSearchTerm() : null }
           type='text'
           placeholder="Buscar..."
-                />
+                /> */}
        
       </Toolbar> 
        </AppBar>

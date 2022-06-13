@@ -40,36 +40,29 @@ export const AboutUs:React.FC = () => {
 
 
 <>       
-      <div className='-translate-y-1/2' style={{marginTop:'-24vh'}}>
-      <div className="p-10 font-bold z-20 text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] -translate-y-full text-center flex-1 flex items-center justify-center flex-col">
-            <h1 className='mb-6 text-4xl xl:text-5xl'>AMH Propiedades</h1>
-            <h2 className='mb-2 text-2xl xl:text-3xl tracking-tight'>
+      <div className='-translate-y-3/4 sm:-translate-y-1/3' style={{marginTop:'-45vh'}}>
+      <div className="p-6 font-bold z-20 text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] -translate-y-full text-center flex-1 flex items-center justify-center flex-col">
+            <h1 className='mb-3 text-4xl xl:text-5xl'>AMH Propiedades</h1>
+            <h2 className='mb-4 text-2xl xl:text-3xl tracking-tight'>
                 <span>Gestores </span> <span>inmobiliario</span>
             </h2> 
         </div>
        <div
        ref={refContainer}
-          className={`  pb-40 mb:pb-40 transition-all -translate-y-full -translate-x-1/4	duration-1000 ${imageLoaded ? 'opacity-100':'opacity-0 -translate-y-10 '}`}
-            style={{marginTop:'-10vh'}}
+          className={`  pb-1   -translate-y-full  animate__animated animate__fadeIn `}
             >
-            <Image
-              src="https://res.cloudinary.com/nahuelement/image/upload/v1637907926/hnzmupeaipcruza83dmu.svg"
-              width={0}
-              height={5}
-              alt='scroll down'
-              onLoad={handleImageLoaded}
-              />
-              <SearchFilters onLoading={handleImageLoaded} />
+           
+              <SearchFilters  />
           </div>
         </div>   
 
   <section className='flex flex-col bg-white py-10 ' 
-      style={{marginTop:'-22vh'}}
+      style={{marginTop:'29vh'}}
           >
 
     <br/>
     <Grid container 
-                  gap={3}
+                  gap={4}
                   paddingBottom={5}
                   paddingTop={0}
                   sx={{flexDirection:{xs:'column',sm:'row'},justifyContent:{xs:'center',sm:'space-evenly'}}}
@@ -92,7 +85,7 @@ export const AboutUs:React.FC = () => {
               
                 <Typography 
                  variant="h5"
-                 fontSize={17}
+                 fontSize={20}
                  fontFamily='Prompt'
                  color='black'
                 >
@@ -115,7 +108,7 @@ export const AboutUs:React.FC = () => {
 
                 <Typography 
                  variant="h5"
-                 fontSize={17}
+                 fontSize={20}
                  fontFamily='Prompt'
                  color='black'
                  
@@ -130,14 +123,14 @@ export const AboutUs:React.FC = () => {
              sx={{backgroundColor:'transparent'}}
 
               >
-              <Image src="/building-svgrepo-com.svg" height={105} width={105} />
+              <Image src="/building-svgrepo-com.svg" height={115} width={115} />
               
               
               
 
                 <Typography 
                  variant="h5"
-                 fontSize={17}
+                 fontSize={20}
                  fontFamily='Prompt'
                  color='black'
                 >
