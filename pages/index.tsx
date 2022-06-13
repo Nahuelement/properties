@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>proto...</title>
+        <title>Propiedades AMH</title>
         
         <link rel="icon" href="/favicon.ico" />
       </Head>
