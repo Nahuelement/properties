@@ -72,7 +72,7 @@ const result = valuesToArray(values)
    
 
     <AppBar  position="absolute" 
-    sx={{width:{xs:'73%',sm:'80%'}, marginX:{xs:'13%',sm:'10%'},height:{xs:'580px',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'4px'}}
+    sx={{width:{xs:'73%',sm:'80%'}, marginX:{xs:'13%',sm:'10%'},height:{xs:'auto',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'6px'}}
     
     >
       <Toolbar disableGutters
@@ -83,7 +83,7 @@ const result = valuesToArray(values)
               paddingLeft:{xs:'3vw'},
               justifyContent:'space-around',
               boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.24)' ,
-              height:{xs:'580px',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'4px'        
+              height:{xs:'auto',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'6px'        
    }} >
               {/* <NextLink href='/' passHref>
                   <Link display='flex' alignItems='center'>

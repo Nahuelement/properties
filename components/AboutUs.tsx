@@ -1,4 +1,4 @@
-import { Grid, Typography,Box ,FormControl, InputLabel,  MenuItem} from '@mui/material'
+import { Grid, Typography,Box ,FormControl, InputLabel,  MenuItem, Paper} from '@mui/material'
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
@@ -48,25 +48,31 @@ export const AboutUs:React.FC = () => {
   return (
 
     // className={` ${matches2 && matches3 ? '-translate-y-5': translate!matches3?'-translate-y-60':'translate-y-6'}`} style={{marginTop:'-45vh'}}
-<>       
-      <Grid xs={12} >
+<>      
+
+
+    <Box 
+    sx={{marginTop:{xs:'-83vh',sm:'-65vh',md:'-65vh',lg:'-55vh',xl:'-65vh'},paddingTop:{xs:'-10vh'}}}
+    >
       
-      <div className="p-6 font-bold z-20 text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] -translate-y-full text-center flex-1 flex items-center justify-center flex-col">
+      <div className="p-1 font-bold z-20 text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] -translate-y-2/4 text-center flex-1 flex items-center justify-center flex-col">
             <h1 className='mb-3 text-4xl xl:text-5xl'>AMH Propiedades</h1>
-            <h2 className='mb-4 text-2xl xl:text-3xl tracking-tight'>
+            <h2 className='mb-1 text-2xl xl:text-3xl tracking-tight'>
                 <span>Gestores </span> <span>inmobiliario</span>
             </h2> 
         </div>
        <div
        ref={refContainer}
-          className={`  pb-1   -translate-y-full  animate__animated animate__fadeIn `}
+          className={`  pb-16   -translate-y-2/4  animate__animated animate__fadeIn `}
             >
               <SearchFilters  />
           </div>
-        </Grid>   
+      </Box>  
+        
+      
 
-  <section className='flex flex-col bg-white py-10 ' 
-      style={{marginTop:'50vh'}}
+  <Box className='flex flex-col bg-white py-10 ' 
+      sx={{marginTop:{xs:'80vh',sm:'55vh',md:'55vh',lg:'60vh',xl:'65vh'},paddingTop:{xs:'-10vh'}}}
           >
 
     <br/>
@@ -189,7 +195,7 @@ export const AboutUs:React.FC = () => {
         </Grid>
      
 
-            </section>       
+            </Box>       
             </>
   )
 }
