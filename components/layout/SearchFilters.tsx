@@ -8,7 +8,6 @@ import { filterData, getFilterValues, PropsFilter } from '../../utils/filterData
 import { baseUrl, fetchApi } from '../../utils/fetchApi';
 import TextField from '@mui/material/TextField';
 import _, { map } from 'underscore'
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 interface Props{
@@ -38,9 +37,8 @@ export const SearchFilters:FC=()=> {
 
   const {push } = useRouter();
 
-  
 
-  const matches = useMediaQuery('(min-width:1290px)');
+
 
   const onSearchTerm = () => {
     if( searchTerm.trim().length === 0 ) return;
@@ -73,17 +71,19 @@ const result = valuesToArray(values)
   return (
    
 
-    <AppBar  position="absolute" sx={{width:{xs:'73%',sm:'80%'}, marginX:{xs:'13%',sm:'10%'}}}
+    <AppBar  position="absolute" 
+    sx={{width:{xs:'73%',sm:'80%'}, marginX:{xs:'13%',sm:'10%'},height:{xs:'580px',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'4px'}}
     
     >
       <Toolbar disableGutters
 
-              sx={{backgroundColor:'whitesmoke',display:{xs:'block',sm:`${!matches?'block':'flex'}`},marginY:{xs:-18},
-              borderRadius:'8px',padding:{xs:'2vw',sm:'1vw'},
+              sx={{backgroundColor:'whitesmoke',display:'flex',
+
+              padding:'1vh',
               paddingLeft:{xs:'3vw'},
-              justifyContent:'space-between',
+              justifyContent:'space-around',
               boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.24)' ,
-              alignItems:'center'           
+              height:{xs:'580px',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'4px'        
    }} >
               {/* <NextLink href='/' passHref>
                   <Link display='flex' alignItems='center'>
@@ -91,14 +91,18 @@ const result = valuesToArray(values)
                         <Typography color='chocolate' sx={{ ml: 0.5 }}>AMH</Typography>
                     </Link>  
               </NextLink> */}
-      <TextField id="outlined-basic" label="Ubicacion" variant="outlined" sx={{margin:1}} />
+      
+      <FormControl 
+      
+      
+      sx={{display:{xs:'flex',sm:'block',md:'block',lg:'flex',xl:'flex'},flexDirection:{xs:'column',sm:'row'}}}>
+      <TextField id="outlined-basic" label="Ubicacion" variant="outlined"  sx={{p:'1vh',ml:{sm:'-2vw'}}} />
     {filters?.map((filter) => (
-        <FormControl 
-        key={filter.queryName}
-        sx={{m:1, position:'relative'}}
-        >
-        <InputLabel 
-        sx={{}}
+         <FormControl 
+         key={filter.queryName}
+         sx={{pt:1,m:1}}
+         >
+        <InputLabel   sx={{pt:1}}
         >{filter.queryName}</InputLabel>
         <Select
           sx={{  minWidth: 110, maxHeight:40 }}
@@ -116,11 +120,9 @@ const result = valuesToArray(values)
 
             ))}
         </Select>
-        
-      </FormControl>
-      
-      
+        </FormControl>
       ))} 
+        </FormControl>
       {/* <Input
           sx={{ maxWidth:'200px'  }}
           className='fadeIn'

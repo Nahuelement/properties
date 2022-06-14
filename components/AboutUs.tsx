@@ -2,7 +2,7 @@ import { Grid, Typography,Box ,FormControl, InputLabel,  MenuItem} from '@mui/ma
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
-import React, { useCallback, useContext, useRef, useState } from 'react'
+import React, { useCallback, useContext, useLayoutEffect, useRef, useState } from 'react'
 import { Banner } from './banners/Banner'
 import Image from 'next/image';
 import videos from '../public/videos';
@@ -10,7 +10,10 @@ import {SearchFilters} from './layout/SearchFilters'
 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ScrollContext } from '../utils/scroll-observer';
-import Headroom from 'react-headroom'
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useEffect } from 'react';
+
+
 
 
 
@@ -20,7 +23,13 @@ export const AboutUs:React.FC = () => {
   const {scrollY} = useContext(ScrollContext)
   const {current: elContainer} = refContainer
   const [transitionState, setTransitionState] = useState(false)
+  
+ 
 
+
+  
+
+  
   
   
   const handleImageLoaded = useCallback(()=>{
@@ -38,9 +47,10 @@ export const AboutUs:React.FC = () => {
 
   return (
 
-
+    // className={` ${matches2 && matches3 ? '-translate-y-5': translate!matches3?'-translate-y-60':'translate-y-6'}`} style={{marginTop:'-45vh'}}
 <>       
-      <div className='-translate-y-3/4 sm:-translate-y-1/3' style={{marginTop:'-45vh'}}>
+      <Grid xs={12} >
+      
       <div className="p-6 font-bold z-20 text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] -translate-y-full text-center flex-1 flex items-center justify-center flex-col">
             <h1 className='mb-3 text-4xl xl:text-5xl'>AMH Propiedades</h1>
             <h2 className='mb-4 text-2xl xl:text-3xl tracking-tight'>
@@ -51,18 +61,17 @@ export const AboutUs:React.FC = () => {
        ref={refContainer}
           className={`  pb-1   -translate-y-full  animate__animated animate__fadeIn `}
             >
-           
               <SearchFilters  />
           </div>
-        </div>   
+        </Grid>   
 
   <section className='flex flex-col bg-white py-10 ' 
-      style={{marginTop:'29vh'}}
+      style={{marginTop:'50vh'}}
           >
 
     <br/>
     <Grid container 
-                  gap={4}
+                  gap={2}
                   paddingBottom={5}
                   paddingTop={0}
                   sx={{flexDirection:{xs:'column',sm:'row'},justifyContent:{xs:'center',sm:'space-evenly'}}}
