@@ -1,4 +1,4 @@
-import { Grid, Typography,Box ,FormControl, InputLabel,  MenuItem, Paper} from '@mui/material'
+import { Grid, Typography,Box ,FormControl, InputLabel,  MenuItem, Button} from '@mui/material'
 import HandshakeIcon from '@mui/icons-material/Handshake';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import FactCheckOutlinedIcon from '@mui/icons-material/FactCheckOutlined';
@@ -52,7 +52,7 @@ export const AboutUs:React.FC = () => {
 
 
     <Box 
-    sx={{marginTop:{xs:'-83vh',sm:'-65vh',md:'-65vh',lg:'-55vh',xl:'-65vh'},paddingTop:{xs:'-10vh'}}}
+    sx={{marginTop:{xs:'-85vh',sm:'-65vh',md:'-65vh',lg:'-60vh',xl:'-65vh'},paddingTop:{xs:'-10vh'}}}
     >
       
       <div className="p-1 font-bold z-20 text-white drop-shadow-[0_5px_3px_rgba(0,0,0,0.4)] -translate-y-2/4 text-center flex-1 flex items-center justify-center flex-col">
@@ -61,25 +61,30 @@ export const AboutUs:React.FC = () => {
                 <span>Gestores </span> <span>inmobiliario</span>
             </h2> 
         </div>
-       <div
+       <Box
+       
        ref={refContainer}
-          className={`  pb-16   -translate-y-2/4  animate__animated animate__fadeIn `}
+          className={`  pb-16 -pt-20  -translate-y-2/4  animate__animated animate__fadeIn `}
+          sx={{marginTop:{xs:'1vh',sm:'-4vh',md:'-4vh',lg:'-30vh',xl:'-28vh'}}}
             >
               <SearchFilters  />
-          </div>
+             
+          </Box>
+ 
+
       </Box>  
         
       
 
   <Box className='flex flex-col bg-white py-10 ' 
-      sx={{marginTop:{xs:'80vh',sm:'55vh',md:'55vh',lg:'60vh',xl:'65vh'},paddingTop:{xs:'-10vh'}}}
+      sx={{marginTop:{xs:'71vh',sm:'25vh',md:'1vh',lg:'5vh',xl:'2vh'},paddingTop:{xs:'-10vh'}}}
           >
 
     <br/>
     <Grid container 
-                  gap={2}
+                  gap={3}
                   paddingBottom={5}
-                  paddingTop={0}
+                  paddingTop={-1}
                   sx={{flexDirection:{xs:'column',sm:'row'},justifyContent:{xs:'center',sm:'space-evenly'}}}
                   alignItems='center'
                   className='drop-shadow-[2px_2px_1px_rgba(0,0,0,0.3)]'
@@ -140,9 +145,6 @@ export const AboutUs:React.FC = () => {
               >
               <Image src="/building-svgrepo-com.svg" height={115} width={115} />
               
-              
-              
-
                 <Typography 
                  variant="h5"
                  fontSize={20}

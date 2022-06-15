@@ -8,6 +8,7 @@ import { filterData, getFilterValues, PropsFilter } from '../../utils/filterData
 import { baseUrl, fetchApi } from '../../utils/fetchApi';
 import TextField from '@mui/material/TextField';
 import _, { map } from 'underscore'
+import { SearchOutlined } from '@mui/icons-material';
 
 
 interface Props{
@@ -69,7 +70,7 @@ const result = valuesToArray(values)
 
 
   return (
-   
+   <>
 
     <AppBar  position="absolute" 
     sx={{width:{xs:'73%',sm:'80%'}, marginX:{xs:'13%',sm:'10%'},height:{xs:'auto',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'6px'}}
@@ -82,7 +83,8 @@ const result = valuesToArray(values)
               padding:'1vh',
               paddingLeft:{xs:'3vw'},
               justifyContent:'space-around',
-              boxShadow: '0px 4px 4px 0px rgba(0,0,0,0.24)' ,
+             
+              boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;' ,
               height:{xs:'auto',sm:'auto',md:'auto',lg:'auto',xl:'auto'},borderRadius:'6px'        
    }} >
               {/* <NextLink href='/' passHref>
@@ -96,11 +98,28 @@ const result = valuesToArray(values)
       
       
       sx={{display:{xs:'flex',sm:'block',md:'block',lg:'flex',xl:'flex'},flexDirection:{xs:'column',sm:'row'}}}>
-      <TextField id="outlined-basic" label="Ubicacion" variant="outlined"  sx={{p:'1vh',ml:{sm:'-2vw'}}} />
+      <TextField 
+          id="outlined-basic" 
+          label="Ubicacion" 
+          variant="outlined"  
+          sx={{p:'-1vh',ml:{sm:'-2vw'},mt:{xs:'2vh',sm:'2vh',md:'2vh',lg:'1vh',xl:'1vh'}}}
+          InputProps={{
+            endAdornment: <InputAdornment position="start">
+              <IconButton
+                  sx={{mr:{xs:'-4vw',sm:'-3vw',md:'-3vw',lg:'-1vw',xl:'-1vw'}}}
+                    // onClick={ toggleSideMenu }
+                    >
+                         <SearchOutlined />
+              </IconButton>
+              </InputAdornment>,
+          }}
+          
+           />
     {filters?.map((filter) => (
          <FormControl 
          key={filter.queryName}
          sx={{pt:1,m:1}}
+         
          >
         <InputLabel   sx={{pt:1}}
         >{filter.queryName}</InputLabel>
@@ -136,9 +155,26 @@ const result = valuesToArray(values)
                 /> */}
        
       </Toolbar> 
-       </AppBar>
       
+       </AppBar>
+       <Box sx={{
+          display:{xs:'none',sm:'flex',md:'flex',lg:'flex',xl:'flex'},
+          flexDirection:'column',
+          alignItems:'center',
+          justifyContent:'center',
+          marginTop:'46vh',
+          
 
+          
+      }}>
+          
+          <Button variant="contained" 
+          sx={{positon:'relative',width:'40vw', height:{sm:'10vh',md:'10vh',lg:'10vh',xl:'10vh'},marginTop:{xs:'10vh',sm:'5vh',md:'-65vh',lg:'18vh',xl:'18vh'}}}>
+                      
+            Buscar
+          </Button>
+          </Box> 
 
+          </>
   );
 }

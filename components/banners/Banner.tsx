@@ -44,8 +44,8 @@ export const Banner:React.FC<Props> = ({purpose, title1, title2, imageUrl,linkNa
     <Box sx={{
           display:'flex',
           flexDirection:'column',
-          alignItems:{xs:'center',sm:'start'},
-          justifyContent:{xs:'center',sm:'start'}
+          alignItems:'start',
+          justifyContent:'center'
           
       }}>
     <Box>
